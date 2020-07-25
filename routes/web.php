@@ -21,11 +21,14 @@ Route::get('/test', function () {
     return "Hola Mundo";
 });
 
-Route::get('/hola/{nombre}', function ($nombre = "Usuario") {
-    return "Hola $nombre conocenos: <a href='".route("nosotros")."'>nosotros</a>";
+Route::get('/hola/{nombre}/{apellido}', function ($nombre = "Usuario", $apellido = "Gónzales") {
+    return "Hola $nombre $apellido conocenos: <a href='".route("nosotros")."'>nosotros</a>";
 });
-
 
 Route::get('/sobre-nosotros', function ($nombre = "Usuario") {
     return "<h1>Toda la información sobre nosotros</h1>";
 })->name("nosotros");
+
+Route::get('/home/{nombre?}/{apellido?}' , function ($nombre = "Usuario", $apellido = "Gónzales") {
+    return view("home", ['nombre' => $nombre, 'apellido' => $apellido]);
+})->name("home");
