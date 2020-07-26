@@ -31,5 +31,9 @@ Route::get('/sobre-nosotros', function ($nombre = "Usuario") {
 
 Route::get('/home/{nombre?}/{apellido?}' , function ($nombre = "Usuario", $apellido = "Gónzales") {
     $posts = ["Post1","Post2","Post3", "post4"];
-    return view("home", ['nombre' => $nombre, 'apellido' => $apellido, "posts" => $posts]);
+    $posts2 = [];
+    return view("home", ['nombre' => $nombre, 'apellido' => $apellido, "posts" => $posts, "posts2" => $posts2]);
 })->name("home");
+
+// Route::get('index', 'PostController@index');
+Route::resource('dashboard/post', 'dashboard\PostController');
