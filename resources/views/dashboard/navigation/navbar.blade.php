@@ -10,17 +10,24 @@
           <a class="nav-link" href="{{route('post.index')}}">Post<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('post.create')}}">Create</a>
+          <a class="nav-link" href="{{route('category.index')}}">Category</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            CRUD
+            CRUD Post
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{{route('post.create')}}">Create</a>
             <a class="dropdown-item" href="{{route('post.index')}}">Read</a>
-            {{-- <a class="dropdown-item" href="{{route('post.update')}}">Update</a> --}}
-            {{-- <a class="dropdown-item" href="{{route('post.destroy')}}">Detele</a> --}}
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            CRUD Category
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{{route('category.create')}}">Create</a>
+            <a class="dropdown-item" href="{{route('category.index')}}">Read</a>
           </div>
         </li>
       </ul>
