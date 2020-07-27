@@ -10,6 +10,7 @@
                 <th>URL Clean</th>
                 <th>Content</th>
                 <th>Posted</th>
+                <th>Category</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
                 <th colspan="3" class="text-center">Actions</th>
@@ -22,6 +23,7 @@
                 <td>{{$post->url_clean}}</td>
                 <td>{{$post->content}}</td>
                 <td>{{$post->posted}}</td>
+                <td>{{$post->category->title}}</td>
                 <td>{{$post->created_at->format('Y-m-d')}}</td>
                 <td>{{$post->updated_at->format('Y-m-d')}}</td>
                 <td>
