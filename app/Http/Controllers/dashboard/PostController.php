@@ -5,7 +5,9 @@ namespace App\Http\Controllers\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StorePostPost;
+//Models
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -67,10 +69,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
-        return view('dashboard.post.edit', ['post' => $post]);
+        $categories = Category::pluck('id', 'title');
+        return view('dashboard.post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**

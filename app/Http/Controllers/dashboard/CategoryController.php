@@ -38,7 +38,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategorycategory $request)
+    public function store(StoreCategoryPost $request)
     {
         //
         Category::create($request->validated());
