@@ -12,7 +12,7 @@
                 <th>Posted</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
-                <th>Actions</th>
+                <th colspan="3" class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +25,17 @@
                 <td>{{$post->created_at->format('Y-m-d')}}</td>
                 <td>{{$post->updated_at->format('Y-m-d')}}</td>
                 <td>
-                <a href="{{route('post.show',$post->id)}}" class="btn btn-secondary">Show</a>
-                <a href="{{route('post.edit',$post->id)}}" class="btn btn-secondary">Edit</a>
+                    <a href="{{route('post.show',$post->id)}}" class="btn btn-secondary">Show</a>
+                </td>
+                <td>
+                    <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary">Edit</a>
+                </td>
+                <td>
+                    <form method="POST" action="{{route('post.destroy',$post->id)}}">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -34,6 +43,9 @@
     </table>
 </div>
 
+@include('dashboard.partials.session-flash-status')
+@include('dashboard.partials.validation-error')
+
 {{ $posts->links() }}
-    
+
 @endsection
