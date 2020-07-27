@@ -17,7 +17,8 @@ class PostController extends Controller
     public function index()
     {
         //
-        echo "Hola";
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        return view('dashboard/post/index', ['posts' => $posts]);
     }
 
     /**
@@ -80,6 +81,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         //
+        echo"Hello";
     }
 
     /**
@@ -91,5 +93,6 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        echo "Hello";
     }
 }
