@@ -24,6 +24,10 @@
                 <td>{{$post->posted}}</td>
                 <td>{{$post->created_at->format('Y-m-d')}}</td>
                 <td>{{$post->updated_at->format('Y-m-d')}}</td>
+                <td>
+                <a href="{{route('post.show',$post->id)}}" class="btn btn-secondary">Show</a>
+                <a href="{{route('post.edit',$post->id)}}" class="btn btn-secondary">Edit</a>
+                </td>
             </tr>
             @endforeach
         </tbody>

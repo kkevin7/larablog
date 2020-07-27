@@ -44,7 +44,6 @@ class PostController extends Controller
         //     'title' => 'required|min:5|max:500',
         //     'content' => 'required|min:5'
         // ]);
-        echo "Hola Mundo: ".$request->input('title');
         Post::create($request->validated());
         return back()->with('status', 'Post created successfully!');
     }
@@ -58,6 +57,8 @@ class PostController extends Controller
     public function show($id)
     {
         //
+        $post = Post::findOrFail($id);
+        return view('dashboard.post.show', ['post' => $post]);
     }
 
     /**
@@ -68,7 +69,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('dashboard.post.edit', ['post' => $post]);
     }
 
     /**
@@ -78,10 +80,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StorePostPost $request, Post $post)
     {
         //
-        echo"Hello";
+        $post->update($request->validated());
+        return back()->with('status', 'Post updated successfully!');
     }
 
     /**
