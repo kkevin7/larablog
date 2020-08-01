@@ -33,5 +33,8 @@ Route::get('/sobre-nosotros', function ($nombre = "Usuario") {
 // })->name("home");
 
 Route::get('home', 'dashboard\PostController@index');
+
+
 Route::resource('dashboard/post', 'dashboard\PostController');
+Route::post('dashboard/post/{image}/image', 'dashboard\PostController@image')->name('post.image');
 Route::resource('dashboard/category', 'dashboard\CategoryController');

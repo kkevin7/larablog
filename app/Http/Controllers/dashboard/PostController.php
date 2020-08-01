@@ -85,9 +85,20 @@ class PostController extends Controller
      */
     public function update(StorePostPost $request, Post $post)
     {
-        //
         $post->update($request->validated());
         return back()->with('status', 'Post updated successfully!');
+    }
+
+    public function image(Request $request, Post $post)
+    {
+        // $post->update($request->validated());
+        // return back()->with('status', 'Post updated successfully!');
+        $request->validate([
+            'image' => 'required|mimes:jpeg,bmp,png|max:10240', //10Mb
+        ]);
+        $filename = time().".".$request->image->extension();
+        $request->image->move(public_path('images'),$filename);
+        echo "Holamundo : ".$filename;
     }
 
     /**
