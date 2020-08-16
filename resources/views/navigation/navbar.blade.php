@@ -1,12 +1,16 @@
-{{-- <div class="row d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"> --}}
-    <nav class="navbar navbar-expand-lg navbar-light p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <a class="navbar-brand" href="{{route('post.index')}}">Larablog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url('/') }}">
+            {{ config('app.name', 'Larablog') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
+                @auth
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('post.index')}}">Post<span class="sr-only">(current)</span></a>
                 </li>
@@ -31,7 +35,9 @@
                         <a class="dropdown-item" href="{{route('category.index')}}">Read</a>
                     </div>
                 </li>
+                @endauth
             </ul>
+
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
@@ -65,6 +71,5 @@
                 @endguest
             </ul>
         </div>
-    </nav>
-
-{{-- </div> --}}
+    </div>
+</nav>

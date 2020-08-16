@@ -1,30 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-</head>
-<body>
-    <h1>Home de Laravel2 - {{"Hola mundo $nombre $apellido"}} </h1>
+@extends('layouts.app')
 
-    @foreach ($posts as $post)
-    
-    @if($loop->first)
-        <h3>Primera iteracion</h3>
-    @elseif($loop->last)
-        <h3>última iteracion</h3>
-    @endif
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-    <li>{{$post}}</li>
-    @endforeach
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-    @forelse ($posts as $post)
-    <li>{{$post}}</li>
-    @empty
-    <li>Vacio</li>
-    @endforelse
-
-</body>
-</html>
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

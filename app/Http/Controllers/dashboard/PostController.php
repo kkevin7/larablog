@@ -12,6 +12,11 @@ use App\PostImage;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +24,6 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('dashboard/post/index', ['posts' => $posts]);
     }
@@ -31,7 +35,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
         $categories = Category::pluck('id', 'title');
         return view("dashboard/post/create",['post' => new Post(), 'categories' => $categories]);
     }
@@ -61,7 +64,8 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('dashboard.post.show', ['post' => $post]);
+        $categories = Category::pluck('id', 'title');
+        return view('dashboard.post.show', compact('post','categories'));
     }
 
     /**
