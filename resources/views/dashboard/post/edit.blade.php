@@ -7,7 +7,7 @@
     @include('dashboard.post._form')
 </form>
 
-<form action="{{route('post.image',$post->id)}}" method="post" enctype="multipart/form-data" class="my-4">
+<form action="{{route("post.image",$post)}}" method="post" enctype="multipart/form-data" class="my-4">
     @csrf
     <div class="row">
         <div class="col">

@@ -8,6 +8,7 @@ use App\Http\Requests\StorePostPost;
 //Models
 use App\Post;
 use App\Category;
+use App\PostImage;
 
 class PostController extends Controller
 {
@@ -59,7 +60,6 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
         $post = Post::findOrFail($id);
         return view('dashboard.post.show', ['post' => $post]);
     }
@@ -91,14 +91,13 @@ class PostController extends Controller
 
     public function image(Request $request, Post $post)
     {
-        // $post->update($request->validated());
-        // return back()->with('status', 'Post updated successfully!');
         $request->validate([
             'image' => 'required|mimes:jpeg,bmp,png|max:10240', //10Mb
         ]);
         $filename = time().".".$request->image->extension();
         $request->image->move(public_path('images'),$filename);
-        echo "Holamundo : ".$filename;
+        PostImage::create(['image'=> $filename, 'post_id' => $post->id]);
+        return back()->with('status','Image upload successfully');
     }
 
     /**
